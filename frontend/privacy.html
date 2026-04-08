@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PostPageX – Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue: #1A6BF0; --blue-light: #EBF1FF; --blue-dark: #0D4BC4;
+  --ink: #0D0F14; --ink-mid: #3D4251; --ink-soft: #7A8099;
+  --line: #E8EAEF; --surface: #F7F8FC; --white: #FFFFFF;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 5vw; height: 68px; background: rgba(255,255,255,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+.logo { display: flex; align-items: center; gap: 10px; font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--ink); text-decoration: none; }
+.logo-mark { width: 36px; height: 36px; border-radius: 10px; background: var(--blue); display: flex; align-items: center; justify-content: center; }
+.logo-mark svg { width: 19px; height: 19px; fill: #fff; }
+.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links a { font-size: .875rem; color: var(--ink-mid); text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--blue); }
+.btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; border-radius: 9px; font-size: .875rem; font-weight: 500; cursor: pointer; text-decoration: none; transition: all .2s; border: none; font-family: inherit; }
+.btn-ghost { background: transparent; color: var(--ink-mid); border: 1px solid var(--line); }
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--blue-dark); }
+
+/* HERO */
+.hero { padding: 130px 5vw 60px; background: var(--surface); border-bottom: 1px solid var(--line); }
+.hero-inner { max-width: 760px; }
+.eyebrow { display: inline-block; padding: 5px 14px; border-radius: 99px; background: var(--blue-light); color: var(--blue-dark); font-size: .78rem; font-weight: 500; margin-bottom: 16px; }
+h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.12; letter-spacing: -.02em; color: var(--ink); margin-bottom: 16px; }
+.hero-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.meta-item { display: flex; align-items: center; gap: 7px; font-size: .82rem; color: var(--ink-soft); }
+.meta-item svg { width: 15px; height: 15px; fill: var(--blue); flex-shrink: 0; }
+.meta-item strong { color: var(--ink-mid); font-weight: 500; }
+
+/* LAYOUT */
+.doc-wrap { max-width: 1100px; margin: 0 auto; padding: 60px 5vw 100px; display: grid; grid-template-columns: 220px 1fr; gap: 60px; align-items: start; }
+
+/* TOC */
+.toc { position: sticky; top: 88px; }
+.toc-title { font-size: .72rem; font-weight: 500; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 14px; }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.toc-list a { display: block; font-size: .82rem; color: var(--ink-soft); text-decoration: none; padding: 5px 10px; border-radius: 7px; border-left: 2px solid transparent; transition: all .2s; }
+.toc-list a:hover { color: var(--blue); background: var(--blue-light); border-left-color: var(--blue); }
+.toc-list a.active { color: var(--blue-dark); background: var(--blue-light); border-left-color: var(--blue); font-weight: 500; }
+
+/* DOCUMENT */
+.doc-body { max-width: 680px; }
+.doc-section { margin-bottom: 52px; scroll-margin-top: 88px; }
+.doc-section h2 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--ink); letter-spacing: -.01em; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.doc-section h3 { font-size: .95rem; font-weight: 500; color: var(--ink); margin: 22px 0 10px; }
+.doc-section p { font-size: .9rem; color: var(--ink-mid); line-height: 1.78; margin-bottom: 14px; font-weight: 300; }
+.doc-section p:last-child { margin-bottom: 0; }
+.doc-section ul, .doc-section ol { padding-left: 20px; margin-bottom: 14px; }
+.doc-section li { font-size: .9rem; color: var(--ink-mid); line-height: 1.78; margin-bottom: 6px; font-weight: 300; }
+.doc-section a { color: var(--blue); text-decoration: none; }
+.doc-section a:hover { text-decoration: underline; }
+code { font-family: monospace; font-size: .82rem; background: var(--blue-light); color: var(--blue-dark); padding: 2px 6px; border-radius: 5px; }
+
+/* callout boxes */
+.callout { border-radius: 12px; padding: 16px 20px; margin: 20px 0; }
+.callout-blue { background: var(--blue-light); border-left: 3px solid var(--blue); }
+.callout-blue p { color: var(--blue-dark); margin: 0; font-weight: 400; }
+.callout-surface { background: var(--surface); border: 1px solid var(--line); }
+.callout-surface p { color: var(--ink-mid); margin: 0; }
+
+/* permission table */
+.perm-table { width: 100%; border-collapse: collapse; font-size: .82rem; margin: 16px 0; }
+.perm-table th { background: var(--surface); padding: 9px 14px; text-align: left; font-size: .68rem; font-weight: 500; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .05em; border-bottom: 2px solid var(--line); }
+.perm-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--ink-mid); vertical-align: top; line-height: 1.55; }
+.perm-table tr:last-child td { border-bottom: none; }
+.perm-table tr:hover td { background: var(--surface); }
+.perm-name { font-family: monospace; font-size: .75rem; background: var(--blue-light); color: var(--blue-dark); padding: 2px 7px; border-radius: 5px; white-space: nowrap; }
+
+/* summary cards */
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.summary-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.summary-card h4 { font-size: .78rem; font-weight: 500; color: var(--ink); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+.summary-card h4 svg { width: 15px; height: 15px; flex-shrink: 0; }
+.summary-card ul { padding-left: 14px; }
+.summary-card li { font-size: .78rem; color: var(--ink-soft); margin-bottom: 4px; line-height: 1.5; font-weight: 300; }
+
+/* update log */
+.update-log { display: flex; flex-direction: column; gap: 12px; }
+.update-item { display: flex; gap: 16px; align-items: flex-start; }
+.update-date { font-size: .75rem; font-weight: 500; color: var(--ink-soft); white-space: nowrap; min-width: 90px; padding-top: 2px; }
+.update-text { font-size: .85rem; color: var(--ink-mid); line-height: 1.6; font-weight: 300; }
+
+/* footer */
+footer { border-top: 1px solid var(--line); padding: 52px 5vw 36px; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+.footer-brand p { font-size: .85rem; color: var(--ink-soft); margin-top: 12px; font-weight: 300; line-height: 1.65; max-width: 240px; }
+.footer-col h4 { font-size: .72rem; font-weight: 500; color: var(--ink); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 14px; }
+.footer-col a { display: block; font-size: .85rem; color: var(--ink-soft); text-decoration: none; margin-bottom: 9px; transition: color .2s; }
+.footer-col a:hover { color: var(--blue); }
+.footer-bottom { border-top: 1px solid var(--line); padding: 22px 5vw; display: flex; justify-content: space-between; font-size: .78rem; color: var(--ink-soft); }
+.footer-bottom a { color: var(--ink-soft); text-decoration: none; }
+.footer-bottom a:hover { color: var(--blue); }
+
+@media (max-width: 860px) { .doc-wrap { grid-template-columns: 1fr; } .toc { position: static; display: none; } footer { grid-template-columns: 1fr 1fr; } .summary-grid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .nav-links { display: none; } footer { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 3h2v-2h2v2h2v2h-2v2h-2v-2h-2v-2z"/></svg></div>
+    PostPageX
+  </a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how">How it works</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div style="display:flex;gap:10px;">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="login.html" class="btn btn-primary">Get started free</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Legal</div>
+    <h1>Privacy Policy</h1>
+    <div class="hero-meta">
+      <div class="meta-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg><span><strong>Effective date:</strong> April 1, 2025</span></div>
+      <div class="meta-item"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg><span><strong>Last updated:</strong> April 1, 2025</span></div>
+      <div class="meta-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg><span><strong>Version:</strong> 1.0</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="doc-wrap">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <ul class="toc-list" id="toc-list">
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#information">Information we collect</a></li>
+      <li><a href="#facebook">Facebook data & permissions</a></li>
+      <li><a href="#how-we-use">How we use your data</a></li>
+      <li><a href="#sharing">Data sharing</a></li>
+      <li><a href="#storage">Data storage & security</a></li>
+      <li><a href="#retention">Data retention</a></li>
+      <li><a href="#your-rights">Your rights</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#changes">Policy changes</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ul>
+  </aside>
+
+  <!-- DOCUMENT -->
+  <div class="doc-body">
+
+    <div class="callout callout-blue">
+      <p><strong>Plain-language summary:</strong> PostPageX connects to your Facebook Pages to schedule and publish content on your behalf. We only access what you explicitly grant, we never sell your data, and you can delete everything at any time. The full details are below.</p>
+    </div>
+
+    <div class="summary-grid" style="margin-top:24px;margin-bottom:48px;">
+      <div class="summary-card">
+        <h4><svg viewBox="0 0 24 24" fill="#16a34a"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> What we do</h4>
+        <ul>
+          <li>Store your posts and schedules</li>
+          <li>Connect to Facebook via Graph API</li>
+          <li>Publish posts on your behalf</li>
+          <li>Read analytics for your pages</li>
+          <li>Encrypt your access tokens</li>
+        </ul>
+      </div>
+      <div class="summary-card">
+        <h4><svg viewBox="0 0 24 24" fill="#dc2626"><path d="M18.3 5.71a1 1 0 00-1.41 0L12 10.59 7.11 5.7A1 1 0 005.7 7.11L10.59 12 5.7 16.89a1 1 0 001.41 1.41L12 13.41l4.89 4.89a1 1 0 001.41-1.41L13.41 12l4.89-4.89a1 1 0 000-1.4z"/></svg> What we never do</h4>
+        <ul>
+          <li>Sell your data to anyone</li>
+          <li>Post without your instruction</li>
+          <li>Access pages you didn't grant</li>
+          <li>Share tokens with third parties</li>
+          <li>Read your personal Facebook profile</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1 -->
+    <div class="doc-section" id="overview">
+      <h2>1. Overview</h2>
+      <p>PostPageX ("we", "us", "our") is a social media management platform that allows users to schedule, publish, and analyse content on Facebook Pages. This Privacy Policy explains how we collect, use, store, and protect your personal information when you use our service at <a href="https://postpagex.com">postpagex.com</a>.</p>
+      <p>By using PostPageX, you agree to the terms of this Privacy Policy. If you do not agree, please do not use our service.</p>
+      <p>PostPageX is not affiliated with, endorsed by, or officially connected to Meta Platforms, Inc. "Facebook" is a trademark of Meta Platforms, Inc.</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="doc-section" id="information">
+      <h2>2. Information we collect</h2>
+      <h3>Account information</h3>
+      <p>When you create a PostPageX account, we collect:</p>
+      <ul>
+        <li>Your name and email address (provided during signup)</li>
+        <li>If you sign up via Google: your Google account name and email, provided by Google's OAuth service</li>
+        <li>Your account password (stored as a one-way hash — we cannot read it)</li>
+        <li>The date and time your account was created</li>
+      </ul>
+      <h3>Content you create</h3>
+      <p>We store the posts, drafts, schedules, media files, and templates you create inside PostPageX. This content is associated with your account and is used solely to operate the service for you.</p>
+      <h3>Usage data</h3>
+      <p>We collect basic technical information when you use PostPageX, including your IP address, browser type, pages visited within our app, and actions taken (such as scheduling a post). This is used to improve the product and diagnose bugs.</p>
+      <h3>Payment information</h3>
+      <p>PostPageX is currently free. If we introduce paid plans in the future, payment processing will be handled by a third-party provider (such as Stripe). We will never store your raw credit card details on our servers.</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="doc-section" id="facebook">
+      <h2>3. Facebook data & permissions</h2>
+      <p>PostPageX connects to your Facebook Pages via Facebook's official Graph API using OAuth. When you click "Connect Facebook Pages" inside your dashboard, you are redirected to Facebook's secure login, where you choose which Pages to grant PostPageX access to.</p>
+
+      <div class="callout callout-blue">
+        <p><strong>Important:</strong> PostPageX only connects to your Facebook <em>Pages</em>, not your personal Facebook profile. We do not access your personal timeline, friends list, messages, or any profile data beyond what is needed to identify your account for authentication purposes.</p>
+      </div>
+
+      <h3>Permissions we request and why</h3>
+      <table class="perm-table">
+        <thead><tr><th>Permission</th><th>Why we need it</th></tr></thead>
+        <tbody>
+          <tr><td><span class="perm-name">pages_show_list</span></td><td>To show you a list of Pages you manage so you can select which ones to connect to PostPageX.</td></tr>
+          <tr><td><span class="perm-name">pages_manage_posts</span></td><td>To create, schedule, edit, and delete posts on your Pages on your behalf.</td></tr>
+          <tr><td><span class="perm-name">publish_video</span></td><td>To upload and publish video posts and Reels to your Pages.</td></tr>
+          <tr><td><span class="perm-name">pages_read_engagement</span></td><td>To read likes, comments, shares, and reach data for your posts to power the analytics dashboard.</td></tr>
+          <tr><td><span class="perm-name">pages_read_user_content</span></td><td>To read comments and reviews left by visitors on your Pages, for moderation and inbox features.</td></tr>
+          <tr><td><span class="perm-name">pages_manage_metadata</span></td><td>To read Page settings, category, and hours, and to enable real-time webhooks so your dashboard stays updated.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Access tokens</h3>
+      <p>When you connect your Facebook Pages, Facebook issues us access tokens that allow PostPageX to act on your behalf. These tokens are:</p>
+      <ul>
+        <li>Stored encrypted in our database using AES-256 encryption</li>
+        <li>Never shared with third parties</li>
+        <li>Used only to perform actions you have explicitly set up (publishing scheduled posts, reading your analytics)</li>
+        <li>Automatically refreshed before they expire to maintain uninterrupted service</li>
+      </ul>
+      <p>You can revoke PostPageX's access to your Facebook Pages at any time by visiting your <a href="https://www.facebook.com/settings?tab=applications" target="_blank">Facebook App Settings</a> and removing PostPageX, or by disconnecting from within your PostPageX dashboard.</p>
+    </div>
+
+    <!-- 4 -->
+    <div class="doc-section" id="how-we-use">
+      <h2>4. How we use your data</h2>
+      <p>We use the information we collect exclusively to:</p>
+      <ul>
+        <li>Provide and operate the PostPageX service</li>
+        <li>Authenticate you and maintain your session</li>
+        <li>Publish posts to your Facebook Pages at the times you schedule</li>
+        <li>Display analytics and performance data for your pages and posts</li>
+        <li>Send you transactional emails (e.g., post failure notifications, account security alerts)</li>
+        <li>Improve our product based on aggregated, anonymised usage patterns</li>
+        <li>Respond to your support requests</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+      <p>We do <strong>not</strong> use your data for advertising, we do not build advertising profiles, and we do not share identifiable data with advertisers.</p>
+    </div>
+
+    <!-- 5 -->
+    <div class="doc-section" id="sharing">
+      <h2>5. Data sharing</h2>
+      <p>PostPageX does not sell, rent, or trade your personal data. We share data only in the following limited circumstances:</p>
+      <h3>Service providers</h3>
+      <p>We use a small number of trusted third-party services to operate PostPageX. These may include cloud hosting providers (to store your data), email delivery services (to send you notifications), and analytics tools (to understand how our product is used). These providers are contractually bound to use your data only to provide their services to us.</p>
+      <h3>Legal requirements</h3>
+      <p>We may disclose your information if required to do so by law, court order, or government authority, or if we believe in good faith that disclosure is necessary to protect our rights, protect your safety, or investigate fraud.</p>
+      <h3>Business transfer</h3>
+      <p>If PostPageX is acquired, merged, or its assets are transferred, your data may be transferred as part of that transaction. We will notify you before your data is transferred and becomes subject to a different privacy policy.</p>
+    </div>
+
+    <!-- 6 -->
+    <div class="doc-section" id="storage">
+      <h2>6. Data storage & security</h2>
+      <p>Your data is stored on secure servers. We implement industry-standard security measures including:</p>
+      <ul>
+        <li>TLS/HTTPS encryption for all data in transit</li>
+        <li>AES-256 encryption for sensitive data at rest (including Facebook access tokens)</li>
+        <li>One-way hashing for passwords (bcrypt)</li>
+        <li>Regular security audits and dependency updates</li>
+        <li>Restricted access controls — only authorised team members can access production data</li>
+      </ul>
+      <p>While we take all reasonable precautions, no system is 100% secure. If you believe your account has been compromised, please contact us immediately at <a href="mailto:security@postpagex.com">security@postpagex.com</a>.</p>
+    </div>
+
+    <!-- 7 -->
+    <div class="doc-section" id="retention">
+      <h2>7. Data retention</h2>
+      <p>We retain your data for as long as your account is active. Specifically:</p>
+      <ul>
+        <li><strong>Account data:</strong> Kept until you delete your account</li>
+        <li><strong>Published posts:</strong> Post records are retained for 12 months after publication to support analytics</li>
+        <li><strong>Drafts and scheduled posts:</strong> Kept until you delete them or close your account</li>
+        <li><strong>Facebook access tokens:</strong> Deleted immediately when you disconnect a Page or delete your account</li>
+        <li><strong>Usage logs:</strong> Retained for 90 days for security and debugging purposes, then deleted</li>
+      </ul>
+      <p>When you delete your account, we will permanently delete all your personal data within 30 days, except where we are legally required to retain it longer.</p>
+    </div>
+
+    <!-- 8 -->
+    <div class="doc-section" id="your-rights">
+      <h2>8. Your rights</h2>
+      <p>You have the following rights regarding your personal data:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the personal data we hold about you</li>
+        <li><strong>Correction:</strong> Ask us to correct inaccurate or incomplete data</li>
+        <li><strong>Deletion:</strong> Request that we delete your account and all associated data</li>
+        <li><strong>Portability:</strong> Request your data in a structured, machine-readable format</li>
+        <li><strong>Disconnection:</strong> Revoke PostPageX's access to your Facebook Pages at any time, from within the dashboard or via Facebook App Settings</li>
+        <li><strong>Objection:</strong> Object to certain types of data processing</li>
+      </ul>
+      <p>To exercise any of these rights, email us at <a href="mailto:privacy@postpagex.com">privacy@postpagex.com</a>. We will respond within 30 days.</p>
+    </div>
+
+    <!-- 9 -->
+    <div class="doc-section" id="cookies">
+      <h2>9. Cookies</h2>
+      <p>PostPageX uses cookies and similar technologies to keep you logged in and remember your preferences. We use:</p>
+      <ul>
+        <li><strong>Session cookies:</strong> To maintain your login session. These expire when you close your browser.</li>
+        <li><strong>Persistent cookies:</strong> To remember your preferences (such as which page you last viewed). These expire after 30 days.</li>
+        <li><strong>Analytics cookies:</strong> To understand how our app is used in aggregate. These are anonymised and do not track you individually across other websites.</li>
+      </ul>
+      <p>We do not use advertising cookies or cross-site tracking cookies. You can control cookies through your browser settings, though disabling session cookies will prevent you from staying logged in.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="doc-section" id="children">
+      <h2>10. Children's privacy</h2>
+      <p>PostPageX is not intended for use by anyone under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has created an account, please contact us at <a href="mailto:privacy@postpagex.com">privacy@postpagex.com</a> and we will delete the account promptly.</p>
+    </div>
+
+    <!-- 11 -->
+    <div class="doc-section" id="changes">
+      <h2>11. Policy changes</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page and, for significant changes, notify you by email or by displaying a prominent notice in the app.</p>
+      <p>Your continued use of PostPageX after a policy update constitutes your acceptance of the revised policy.</p>
+      <h3>Version history</h3>
+      <div class="update-log">
+        <div class="update-item">
+          <div class="update-date">Apr 1, 2025</div>
+          <div class="update-text">Version 1.0 — Initial Privacy Policy published alongside PostPageX early access launch.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="doc-section" id="contact">
+      <h2>12. Contact us</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your data, please contact us:</p>
+      <div class="callout callout-surface">
+        <p><strong>PostPageX</strong><br>
+        Email: <a href="mailto:privacy@postpagex.com">privacy@postpagex.com</a><br>
+        Support: <a href="mailto:hello@postpagex.com">hello@postpagex.com</a><br>
+        Security: <a href="mailto:security@postpagex.com">security@postpagex.com</a><br>
+        Contact form: <a href="contact.html">postpagex.com/contact</a></p>
+      </div>
+      <p style="margin-top:16px;">We will respond to all privacy-related enquiries within 30 days.</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 24 24"><path d="M4 4h6v6H4zm10 0h6v6h-6zM4 14h6v6H4zm10 3h2v-2h2v2h2v2h-2v2h-2v-2h-2v-2z"/></svg></div>
+      PostPageX
+    </a>
+    <p>The focused Facebook Page management platform for agencies, creators, and businesses.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Product</h4>
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how">How it works</a>
+    <a href="index.html#permissions">Permissions</a>
+  </div>
+  <div class="footer-col">
+    <h4>Company</h4>
+    <a href="contact.html">Contact</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+  </div>
+  <div class="footer-col">
+    <h4>Support</h4>
+    <a href="#">Documentation</a>
+    <a href="contact.html">Help center</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 PostPageX. All rights reserved.</span>
+  <span>Not affiliated with Meta Platforms, Inc. · <a href="privacy.html">Privacy</a></span>
+</div>
+
+<script>
+  // Active TOC on scroll
+  const sections = document.querySelectorAll('.doc-section');
+  const links = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-80px 0px -60% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

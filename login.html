@@ -483,6 +483,8 @@
 <div class="toast" id="toast"></div>
 
 <script>
+  const API_URL = 'https://postpagex-backend-production.up.railway.app';
+
   function switchTab(tab) {
     const isSignin = tab === 'signin';
     document.getElementById('tab-signin').classList.toggle('active', isSignin);
@@ -511,7 +513,6 @@
     if (/[0-9]/.test(val)) score++;
     if (/[^A-Za-z0-9]/.test(val)) score++;
     const cls = score <= 1 ? 'weak' : score === 2 ? 'fair' : 'strong';
-    const labels = ['', 'Weak', 'Weak', 'Fair', 'Strong'];
     for (let i = 0; i < score; i++) bars[i].classList.add(cls);
     label.textContent = score < 4 ? 'Add uppercase, numbers, or symbols to strengthen' : 'Strong password';
     label.style.color = score >= 4 ? 'var(--success)' : score >= 3 ? '#f59e0b' : 'var(--ink-soft)';
@@ -534,135 +535,113 @@
   }
 
   function handleGoogle() {
-    showToast('Redirecting to Google sign-in…');
-    setTimeout(() => { showToast('Google OAuth would open here in the live app', 'success'); }, 1000);
+    window.location.href = `${API_URL}/auth/google`;
   }
 
   function handleSignin() {
-  const email = document.getElementById('signin-email');
-  const password = document.getElementById('signin-password');
+    const email    = document.getElementById('signin-email');
+    const password = document.getElementById('signin-password');
+    let valid = true;
 
-  let valid = true;
+    document.getElementById('signin-email-err').classList.remove('show');
+    document.getElementById('signin-pw-err').classList.remove('show');
+    email.classList.remove('error');
+    password.classList.remove('error');
 
-  document.getElementById('signin-email-err').classList.remove('show');
-  document.getElementById('signin-pw-err').classList.remove('show');
-  email.classList.remove('error');
-  password.classList.remove('error');
-
-  if (!validateEmail(email.value)) {
-    email.classList.add('error');
-    document.getElementById('signin-email-err').classList.add('show');
-    valid = false;
-  }
-
-  if (password.value.length < 1) {
-    password.classList.add('error');
-    document.getElementById('signin-pw-err').classList.add('show');
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  setLoading('signin-btn', true);
-
-  fetch("http://localhost:4000/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    credentials: "include",
-    body: JSON.stringify({
-      email: email.value,
-      password: password.value
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    setLoading('signin-btn', false);
-
-    if (data.user) {
-      showToast('Signed in successfully 🚀', 'success');
-      setTimeout(() => {
-        window.location.href = "postpagex-dashboard.html";
-      }, 1000);
-    } else {
-      showToast(data.error || "Login failed", 'error');
+    if (!validateEmail(email.value)) {
+      email.classList.add('error');
+      document.getElementById('signin-email-err').classList.add('show');
+      valid = false;
     }
-  })
-  .catch(err => {
-    setLoading('signin-btn', false);
-    console.error(err);
-    showToast("Server error", 'error');
-  });
-}
+    if (password.value.length < 1) {
+      password.classList.add('error');
+      document.getElementById('signin-pw-err').classList.add('show');
+      valid = false;
+    }
+    if (!valid) return;
+
+    setLoading('signin-btn', true);
+
+    fetch(`${API_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email: email.value, password: password.value })
+    })
+    .then(res => res.json())
+    .then(data => {
+      setLoading('signin-btn', false);
+      if (data.token || data.user) {
+        if (data.token) localStorage.setItem('ppx_token', data.token);
+        showToast('Signed in successfully! Redirecting…', 'success');
+        setTimeout(() => window.location.href = 'postpagex-dashboard.html', 1200);
+      } else {
+        showToast(data.error || 'Invalid email or password', 'error');
+      }
+    })
+    .catch(err => {
+      setLoading('signin-btn', false);
+      console.error('Login error:', err);
+      showToast('Cannot reach server — please try again', 'error');
+    });
+  }
 
   function handleSignup() {
-  const name  = document.getElementById('signup-name');
-  const email = document.getElementById('signup-email');
-  const pw    = document.getElementById('signup-password');
+    const name  = document.getElementById('signup-name');
+    const email = document.getElementById('signup-email');
+    const pw    = document.getElementById('signup-password');
+    let valid = true;
 
-  let valid = true;
+    ['signup-name-err','signup-email-err','signup-pw-err']
+      .forEach(id => document.getElementById(id).classList.remove('show'));
+    [name, email, pw].forEach(el => el.classList.remove('error'));
 
-  ['signup-name-err','signup-email-err','signup-pw-err']
-    .forEach(id => document.getElementById(id).classList.remove('show'));
-
-  [name, email, pw].forEach(el => el.classList.remove('error'));
-
-  if (!name.value.trim()) {
-    name.classList.add('error');
-    document.getElementById('signup-name-err').classList.add('show');
-    valid = false;
-  }
-
-  if (!validateEmail(email.value)) {
-    email.classList.add('error');
-    document.getElementById('signup-email-err').classList.add('show');
-    valid = false;
-  }
-
-  if (pw.value.length < 8) {
-    pw.classList.add('error');
-    document.getElementById('signup-pw-err').classList.add('show');
-    valid = false;
-  }
-
-  if (!document.getElementById('terms').checked) {
-    showToast('Please accept the terms', 'error');
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  setLoading('signup-btn', true);
-
-  fetch("http://localhost:4000/api/auth/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: name.value,
-      email: email.value,
-      password: pw.value
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    setLoading('signup-btn', false);
-
-    if (data.user) {
-      showToast('Account created 🎉', 'success');
-      switchTab('signin');
-    } else {
-      showToast(data.error || "Signup failed", 'error');
+    if (!name.value.trim()) {
+      name.classList.add('error');
+      document.getElementById('signup-name-err').classList.add('show');
+      valid = false;
     }
-  })
-  .catch(err => {
-    setLoading('signup-btn', false);
-    console.error(err);
-    showToast("Server error", 'error');
-  });
-}
+    if (!validateEmail(email.value)) {
+      email.classList.add('error');
+      document.getElementById('signup-email-err').classList.add('show');
+      valid = false;
+    }
+    if (pw.value.length < 8) {
+      pw.classList.add('error');
+      document.getElementById('signup-pw-err').classList.add('show');
+      valid = false;
+    }
+    if (!document.getElementById('terms').checked) {
+      showToast('Please accept the terms to continue', 'error');
+      valid = false;
+    }
+    if (!valid) return;
+
+    setLoading('signup-btn', true);
+
+    fetch(`${API_URL}/auth/signup`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ name: name.value.trim(), email: email.value, password: pw.value })
+    })
+    .then(res => res.json())
+    .then(data => {
+      setLoading('signup-btn', false);
+      if (data.token || data.user) {
+        if (data.token) localStorage.setItem('ppx_token', data.token);
+        showToast('Account created! Welcome to PostPageX 🎉', 'success');
+        setTimeout(() => window.location.href = 'postpagex-dashboard.html', 1400);
+      } else {
+        showToast(data.error || 'Signup failed — please try again', 'error');
+      }
+    })
+    .catch(err => {
+      setLoading('signup-btn', false);
+      console.error('Signup error:', err);
+      showToast('Cannot reach server — please try again', 'error');
+    });
+  }
 
   // Show mobile logo on small screens
   if (window.innerWidth <= 860) {
